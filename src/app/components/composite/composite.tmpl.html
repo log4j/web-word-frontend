@@ -1,0 +1,97 @@
+<md-content class="padded-content-page">
+
+    <div class="example-code md-whiteframe-z1 margin-bottom-20">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Editor</h2>
+            </div>
+        </md-toolbar>
+
+        <div class="md-tabs-content padding-40">
+
+            <md-button class="md-primary" ng-click="vm.addParagraph(-1)">Insert One Paragraph</md-button>
+
+            <md-card ng-repeat="p in vm.data">
+                <md-card-content>
+
+                    <div class="md-toolbar-tools" layout-align="start center">
+                        <md-input-container>
+                            <md-select placeholder="Type" ng-model="p.type">
+                                <md-option value="paragraph">Paragraph</md-option>
+                                <md-option value="pagebreak">PageBreak</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-button class="md-primary" ng-click="vm.addText(p,-1)">Insert New Text</md-button>
+                    </div>
+
+                    <!--<md-input-container md-no-float class="md-block" ng-repeat="t in p.texts">
+                        <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
+                        <input type="text" placeholder="Header" ng-model='vm.data.header'>
+                    </md-input-container>-->
+
+                    <md-table-container>
+
+                        
+                        <table class="md-primary md-data-table" style="width:100%;">
+                            <!--<thead md-head md-order="vm.query.order" md-on-reorder="vm.getUsers">
+                                <tr md-row>
+                                    <th md-column><span translate>{{vm.columns.avatar}}</span></th>
+                                    <th md-column><span translate>{{vm.columns.login}}</span></th>
+                                    <th md-column md-numberic md-order-by="id"><span translate>{{vm.columns.id}}</span></th>
+                                </tr>
+                            </thead>-->
+                            <tbody >
+                                <tr ng-repeat="t in p.texts">
+                                    <td>
+
+                                        <md-input-container class="md-block">
+                                            <label>Text</label>
+                                            <textarea ng-model="t.text" rows="3"></textarea>
+                                        </md-input-container>
+                                        <md-input-container class="md-block" ng-show='t.options.link'>
+                                            <label>Link</label>
+                                            <input type="url" ng-model="t.options.url"></textarea>
+                                        </md-input-container>
+                                    </td>
+                                    <td width='100px'>
+                                        <md-input-container class="md-block">
+                                            <md-checkbox ng-model="t.options.bold" aria-label="Default Checkbox">
+                                                Bold
+                                            </md-checkbox>
+                                            <md-checkbox ng-model="t.options.underline" aria-label="Default Checkbox">
+                                                Underline
+                                            </md-checkbox>
+                                            <md-checkbox ng-model="t.options.link" aria-label="Default Checkbox">
+                                                Link
+                                            </md-checkbox>
+                                        </md-input-container>
+                                    </td>
+                                    <td width='100px'>
+                                        <md-button class="md-primary" ng-click="vm.addText(p,$index)">Insert Text After This</md-button>
+                                    </td>
+                                    <td width='100px'>
+                                        <md-button class="md-warn" ng-click="vm.removeText(p,$index)">Remove</md-button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+
+
+                </md-card-content>
+
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-primary" ng-click="vm.addParagraph($index)">Insert One Paragraph After This</md-button>
+                    <md-button class="md-warn" ng-click="vm.removeParagraph($index)">Remove</md-button>
+                </md-card-actions>
+
+            </md-card>
+
+            <md-button class="md-primary" ng-click="vm.generateDocument()">Generate Doc</md-button>
+        </div>
+
+    </div>
+
+
+</md-content>
