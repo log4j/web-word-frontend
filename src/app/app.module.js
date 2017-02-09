@@ -26,7 +26,6 @@
 
         // set a constant for the API we are connecting to
         .constant('API_CONFIG', {
-            'url':  'http://triangular-api.oxygenna.com/',
             'host' : 'http://word.mangs.site:4000/'
         });
 })();
